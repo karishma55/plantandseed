@@ -1,0 +1,22 @@
+
+RewriteEngine on
+
+# if a directory or a file exists, use the request directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# otherwise forward the request to index.php
+RewriteRule . index.php
+
+#RewriteCond %{REQUEST_URI} !^/frontend/data/banner_image
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
+
+ #index.php to root
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^/]+/)*index\.(html?|php)\ HTTP/
+RewriteCond %{REQUEST_URI} !^/backend/data/
+
+RewriteRule (([^/]+/)*)index\.(html?|php)$ http://plantandseedoils.com/backend/$1 [R=301,L]
+
+
